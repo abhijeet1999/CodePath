@@ -12,6 +12,7 @@ import PhotosUI
 class DetailViewController: UIViewController {
     var item: Task? 
     var onSave: ((Task) -> Void)?
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var attachImageButton: UIButton!
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -82,7 +83,7 @@ class DetailViewController: UIViewController {
     
     fileprivate func updateView(item: Task) {
         titleLabel.text = item.title
-        
+        descriptionLabel.text = item.description
         detailImageView.image = item.isComplete ? UIImage(systemName: "checkmark.circle") : UIImage(systemName: "circle")
         detailImageView.tintColor = item.isComplete ? UIColor.green : UIColor.red
         attachImageButton.isHidden = item.isComplete

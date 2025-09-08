@@ -17,6 +17,8 @@
 		3D898D392E636152003E3902 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D898D382E636152003E3902 /* TaskTableViewCell.swift */; };
 		3D898D3B2E636CBF003E3902 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D898D3A2E636CBF003E3902 /* DetailViewController.swift */; };
 		3D898D3D2E636CD6003E3902 /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D898D3C2E636CD6003E3902 /* DetailView.storyboard */; };
+		3D9A9F812E6E5AEA00777E2C /* NewTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A9F802E6E5AEA00777E2C /* NewTask.storyboard */; };
+		3D9A9F832E6E5AFF00777E2C /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9A9F822E6E5AFF00777E2C /* NewTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		3D898D382E636152003E3902 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		3D898D3A2E636CBF003E3902 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3D898D3C2E636CD6003E3902 /* DetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
+		3D9A9F802E6E5AEA00777E2C /* NewTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewTask.storyboard; sourceTree = "<group>"; };
+		3D9A9F822E6E5AFF00777E2C /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				3D898D382E636152003E3902 /* TaskTableViewCell.swift */,
 				3D898D3A2E636CBF003E3902 /* DetailViewController.swift */,
 				3D898D3C2E636CD6003E3902 /* DetailView.storyboard */,
+				3D9A9F802E6E5AEA00777E2C /* NewTask.storyboard */,
+				3D9A9F822E6E5AFF00777E2C /* NewTaskViewController.swift */,
 			);
 			path = PhotoScavengersApp;
 			sourceTree = "<group>";
@@ -138,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D898D2C2E635ADE003E3902 /* Assets.xcassets in Resources */,
+				3D9A9F812E6E5AEA00777E2C /* NewTask.storyboard in Resources */,
 				3D898D2F2E635ADE003E3902 /* Base in Resources */,
 				3D898D3D2E636CD6003E3902 /* DetailView.storyboard in Resources */,
 				3D898D2A2E635ADB003E3902 /* Base in Resources */,
@@ -152,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D898D372E635E1D003E3902 /* Task.swift in Sources */,
+				3D9A9F832E6E5AFF00777E2C /* NewTaskViewController.swift in Sources */,
 				3D898D272E635ADB003E3902 /* ViewController.swift in Sources */,
 				3D898D392E636152003E3902 /* TaskTableViewCell.swift in Sources */,
 				3D898D3B2E636CBF003E3902 /* DetailViewController.swift in Sources */,

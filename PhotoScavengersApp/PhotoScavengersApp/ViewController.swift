@@ -12,10 +12,10 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var scavengerTableView: UITableView!
     private var data = [
-        Task(title: "Test 1"),
-        Task(title: "Test 2"),
-        Task(title: "Test 3"),
-        Task(title: "Test 4")
+        Task(title: "Test 1", description: "Where do you want to go to be one with nature ?"),
+        Task(title: "Test 2", description: "Where do you want to go to be one with nature ?"),
+        Task(title: "Test 3", description: "Where do you want to go to be one with nature ?"),
+        Task(title: "Test 4", description: "Where do you want to go to be one with nature ?")
     
     ]
   
@@ -23,10 +23,31 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationItem.title = "Photo Scavenger Hunt"
+        scavengerTableView.delegate = self
+        scavengerTableView.dataSource = self
      
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // This will reload data in order to reflect any changes made to a task after returning from the detail screen.
+        scavengerTableView.reloadData()
+    }
+    
 
 
+    @IBAction func AddTask(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "NewTask", bundle: nil)
+        guard let detailVC  = storyboard.instantiateViewController(withIdentifier: "NewTaskViewController") as? NewTaskViewController else { return }
+        detailVC.onComposeTask = { [weak self] updatedItem in
+            self?.data.append(updatedItem)
+            DispatchQueue.main.async {
+                    self?.scavengerTableView.reloadData()
+                }
+           }
+        present(detailVC, animated: true)
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {

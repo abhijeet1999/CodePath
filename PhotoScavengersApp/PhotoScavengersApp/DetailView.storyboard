@@ -72,6 +72,7 @@
                     </view>
                     <connections>
                         <outlet property="attachImageButton" destination="uud-vL-fpO" id="XtQ-7W-tzc"/>
+                        <outlet property="descriptionLabel" destination="vv8-yy-Wk4" id="blM-BO-mMR"/>
                         <outlet property="detailImageView" destination="3S2-NR-73M" id="OdL-uE-0pQ"/>
                         <outlet property="detailmapkit" destination="dfi-9U-e69" id="Ca0-e3-Beg"/>
                         <outlet property="titleLabel" destination="OaC-Vj-e7F" id="7bw-l3-M3b"/>
