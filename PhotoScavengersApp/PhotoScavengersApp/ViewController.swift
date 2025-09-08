@@ -35,7 +35,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("table tapped")
-        let detailVC = DetailViewController()
+        let storyboard = UIStoryboard(name: "DetailView", bundle: nil)
+        guard let detailVC  = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
         detailVC.item = data[indexPath.row] // pass selected model
         detailVC.onSave = { [weak self] updatedItem in
                self?.data[indexPath.row] = updatedItem
