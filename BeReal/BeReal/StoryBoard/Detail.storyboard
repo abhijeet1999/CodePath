@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detail View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="Y6W-OH-hqX" customClass="DetailViewController" customModule="BeReal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Add a Caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MJT-ul-Kqm">
+                                <rect key="frame" x="16" y="116.00000000000001" width="361" height="28.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ev7-qv-27n">
+                                <rect key="frame" x="16" y="154.66666666666666" width="361" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Select a  Photo"/>
+                                <connections>
+                                    <action selector="attachAPhotoTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="XqE-KV-xEI"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qtp-rT-qRt">
+                                <rect key="frame" x="16" y="214.66666666666663" width="361" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="9yO-tR-fkE"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post a Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QcU-cF-LPE">
+                                <rect key="frame" x="136.66666666666666" y="69" width="119.99999999999997" height="27"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6nm-k6-ZVK">
+                                <rect key="frame" x="319" y="65.333333333333329" width="58" height="34.333333333333329"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Post">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="postButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1od-AW-CLB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qtp-rT-qRt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="9cR-kg-Tuc"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="MJT-ul-Kqm" secondAttribute="trailing" constant="16" id="DBJ-Ud-jzu"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="6nm-k6-ZVK" secondAttribute="trailing" constant="16" id="IIn-aH-xqm"/>
+                            <constraint firstItem="ev7-qv-27n" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="M7A-KO-5Da"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qtp-rT-qRt" secondAttribute="trailing" constant="16" id="PI3-Ws-yBO"/>
+                            <constraint firstItem="MJT-ul-Kqm" firstAttribute="top" secondItem="QcU-cF-LPE" secondAttribute="bottom" constant="20" id="Phr-gc-7o8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ev7-qv-27n" secondAttribute="trailing" constant="16" id="SOY-oC-qey"/>
+                            <constraint firstItem="ev7-qv-27n" firstAttribute="top" secondItem="MJT-ul-Kqm" secondAttribute="bottom" constant="10" id="Ts6-4E-Q5h"/>
+                            <constraint firstItem="QcU-cF-LPE" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Tt8-Ye-3DC"/>
+                            <constraint firstItem="QcU-cF-LPE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="c5P-v1-In6"/>
+                            <constraint firstItem="MJT-ul-Kqm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="dMn-Hp-ULI"/>
+                            <constraint firstItem="QcU-cF-LPE" firstAttribute="centerY" secondItem="6nm-k6-ZVK" secondAttribute="centerY" id="omW-Lq-zB8"/>
+                            <constraint firstItem="qtp-rT-qRt" firstAttribute="top" secondItem="ev7-qv-27n" secondAttribute="bottom" constant="25" id="rQ7-H9-188"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="captionTextfield" destination="MJT-ul-Kqm" id="dKh-ge-5Ad"/>
+                        <outlet property="photoImageView" destination="qtp-rT-qRt" id="WXW-Zm-RI5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="61.832061068702288" y="-2.1126760563380285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
