@@ -8,13 +8,16 @@
 import UIKit
 import PhotosUI
 import ParseSwift
+import CoreLocation
 
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var captionTextfield: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
-    weak var pickedImage:UIImage?
+    var pickedImage:UIImage?
     var coordinates: CLLocationCoordinate2D?
+    private let locationManager = CLLocationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,38 +25,40 @@ class DetailViewController: UIViewController {
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     @IBAction func attachAPhotoTapped(_ sender: UIButton) {
-        var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+        let alert = UIAlertController(title: "Select Photo", message: "Choose a source", preferredStyle: .actionSheet)
         
-        // Set the filter to only show images as options (i.e. no videos, etc.).
-        config.filter = .images
+        // Camera option
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            alert.addAction(UIAlertAction(title: "Camera", style: .default) { _ in
+                let picker = UIImagePickerController()
+                picker.delegate = self
+                picker.sourceType = .camera
+                picker.allowsEditing = false
+                self.locationManager.startUpdatingLocation()
+                self.present(picker, animated: true)
+            })
+        }
         
-        // Request the original file format. Fastest method as it avoids transcoding.
-        config.preferredAssetRepresentationMode = .current
+        // Photo library option
+        alert.addAction(UIAlertAction(title: "Photo Library", style: .default) { _ in
+            var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
+            config.filter = .images
+            config.selectionLimit = 1
+            config.preferredAssetRepresentationMode = .current
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+            self.present(picker, animated: true)
+        })
         
-        // Only allow 1 image to be selected at a time.
-        config.selectionLimit = 1
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
         
-        // Instantiate a picker, passing in the configuration.
-        let picker = PHPickerViewController(configuration: config)
-        
-        // Set the picker delegate so we can receive whatever image the user picks.
-        picker.delegate = self
-        
-        // Present the picker.
-        present(picker, animated: true)
     }
     
     @IBAction func postButtonTapped(_ sender: UIButton) {
+        
         guard let image = pickedImage,
                   let imageData = image.jpegData(compressionQuality: 0.1),
                   let coordinates = coordinates else {
@@ -67,10 +72,12 @@ class DetailViewController: UIViewController {
             post.imageFile = imageFile
             post.caption = captionTextfield.text
             post.user = User.current
-            post.createdAt = Date()
+            
+            // ✅ No need to set post.createdAt manually, Parse handles this.
 
-            // ✅ Save only after we resolve location
+            // Save only after resolving location
             getLocation(coordinates: coordinates) { [weak self] locationName in
+                guard let self = self else { return }
                 post.location = locationName
 
                 post.save { result in
@@ -78,9 +85,28 @@ class DetailViewController: UIViewController {
                         switch result {
                         case .success(let post):
                             print("✅ Post Saved! \(post)")
-                            self?.navigationController?.popViewController(animated: true)
+
+                            // Update the user’s lastPostedDate
+                            if var currentUser = User.current {
+                                currentUser.lastPostedDate = Date()
+                                currentUser.ACL = ParseACL()
+                                currentUser.ACL?.publicRead = true
+                                currentUser.save { saveResult in
+                                    DispatchQueue.main.async {
+                                        switch saveResult {
+                                        case .success(let user):
+                                            print("✅ User updated: \(user)")
+                                            self.navigationController?.popViewController(animated: true)
+
+                                        case .failure(let error):
+                                            self.showAlert(description: error.localizedDescription)
+                                        }
+                                    }
+                                }
+                            }
+
                         case .failure(let error):
-                            self?.showAlert(description: error.localizedDescription)
+                            self.showAlert(description: error.localizedDescription)
                         }
                     }
                 }
@@ -160,5 +186,32 @@ extension DetailViewController: PHPickerViewControllerDelegate {
         }
         
         
+    }
+}
+
+// MARK: - UIImagePicker Delegate & CLLocation
+extension DetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        if let image = info[.originalImage] as? UIImage {
+            photoImageView.image = image
+            pickedImage = image
+        }
+        // Stop updating location after getting coordinates
+        locationManager.stopUpdatingLocation()
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+        locationManager.stopUpdatingLocation()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        coordinates = locations.last?.coordinate
+        print("Device location: \(coordinates!)")
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to get device location: \(error.localizedDescription)")
     }
 }
