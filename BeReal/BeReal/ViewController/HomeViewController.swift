@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ParseSwift
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -23,7 +24,6 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.allowsSelection = false
     
     }
     
@@ -67,22 +67,24 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     
     private func queryPosts() {
-        // TODO: Pt 1 - Query Posts
+        // Get the date for 24 hours ago
+        let yesterdayDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+
+        // Query posts
         let query = Post.query()
             .include("user")
             .order([.descending("createdAt")])
-
-        // Fetch objects (posts) defined in query (async)
-        query.find { [weak self] result in
+            .where("createdAt" >= yesterdayDate) // <- Only include results created yesterday onwards
+            .limit(10) // <- Limit max number of returned posts to 10                                       // limit to 20 results
+        // Fetch the posts
+        query.find { [weak self] (result: Result<[Post], ParseError>) in
             switch result {
             case .success(let posts):
-                // Update local posts property with fetched posts
                 self?.posts = posts
             case .failure(let error):
                 self?.showAlert(description: error.localizedDescription)
             }
         }
-
     }
     
     private func showConfirmLogoutAlert() {
@@ -106,6 +108,10 @@ extension HomeViewController {
 
 
 extension HomeViewController: UITableViewDataSource,UITableViewDelegate {
+    
+
+
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -117,4 +123,24 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate {
         cell.configure(with: posts[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        
+        guard let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell else { return }
+
+        // Only allow tap if hiddenView is hidden (i.e., not blurred)
+        guard cell.hiddenView.isHidden else {
+            // Optionally: show a toast/message
+            print("⛔ Post is blurred, cannot view comments yet")
+            return
+        }
+
+        // Navigate to comment screen
+        guard let vc = StoryBoardConstants.comment.instance.instantiateViewController(
+            withIdentifier: StoryBoardIdentifiers.postCommentViewController) as? PostCommentViewController else { return }
+        vc.post = post
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
 }

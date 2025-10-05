@@ -18,6 +18,9 @@
 		3D2AE6022E8823B50021D63A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3D2AE6012E8823B50021D63A /* Alamofire */; };
 		3D2AE6072E8823E10021D63A /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 3D2AE6062E8823E10021D63A /* AlamofireImage */; };
 		3D2AE6092E883E470021D63A /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2AE6082E883E470021D63A /* Date+Extension.swift */; };
+		3D97C3C22E91EC0600A63FD1 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97C3C12E91EC0600A63FD1 /* Comment.swift */; };
+		3D97C3C42E91EC4700A63FD1 /* Comment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D97C3C32E91EC4700A63FD1 /* Comment.storyboard */; };
+		3D97C3C62E91EF9400A63FD1 /* PostCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D97C3C52E91EF9400A63FD1 /* PostCommentViewController.swift */; };
 		3DE55CB22E7F225800B2F951 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE55CB12E7F225800B2F951 /* AppDelegate.swift */; };
 		3DE55CB42E7F225800B2F951 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE55CB32E7F225800B2F951 /* SceneDelegate.swift */; };
 		3DE55CB62E7F225800B2F951 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE55CB52E7F225800B2F951 /* ViewController.swift */; };
@@ -39,6 +42,9 @@
 		3D2AE5FA2E84777F0021D63A /* UserAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticator.swift; sourceTree = "<group>"; };
 		3D2AE5FE2E8821E30021D63A /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		3D2AE6082E883E470021D63A /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		3D97C3C12E91EC0600A63FD1 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		3D97C3C32E91EC4700A63FD1 /* Comment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comment.storyboard; sourceTree = "<group>"; };
+		3D97C3C52E91EF9400A63FD1 /* PostCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentViewController.swift; sourceTree = "<group>"; };
 		3DE55CAE2E7F225800B2F951 /* BeReal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeReal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DE55CB12E7F225800B2F951 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DE55CB32E7F225800B2F951 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +78,7 @@
 			children = (
 				3D1C7EB82E7F63BD002C08ED /* Post.swift */,
 				3D2AE5F42E8375390021D63A /* User.swift */,
+				3D97C3C12E91EC0600A63FD1 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -117,6 +124,7 @@
 				3DE55CC92E7F468700B2F951 /* Signup.storyboard */,
 				3D1C7EB52E7F5FF0002C08ED /* Home.storyboard */,
 				3D1C7EBA2E8067A8002C08ED /* Detail.storyboard */,
+				3D97C3C32E91EC4700A63FD1 /* Comment.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -129,6 +137,7 @@
 				3DE55CCF2E7F4F2300B2F951 /* HomeViewController.swift */,
 				3D1C7EBC2E806C62002C08ED /* DetailViewController.swift */,
 				3D2AE5FE2E8821E30021D63A /* PostTableViewCell.swift */,
+				3D97C3C52E91EF9400A63FD1 /* PostCommentViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -202,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DE55CBB2E7F225A00B2F951 /* Assets.xcassets in Resources */,
+				3D97C3C42E91EC4700A63FD1 /* Comment.storyboard in Resources */,
 				3D1C7EB62E7F5FF0002C08ED /* Home.storyboard in Resources */,
 				3DE55CBE2E7F225A00B2F951 /* Base in Resources */,
 				3DE55CCA2E7F468700B2F951 /* Signup.storyboard in Resources */,
@@ -225,9 +235,11 @@
 				3D2AE6092E883E470021D63A /* Date+Extension.swift in Sources */,
 				3DE55CCC2E7F46D100B2F951 /* SignUpViewController.swift in Sources */,
 				3D2AE5F52E8375390021D63A /* User.swift in Sources */,
+				3D97C3C22E91EC0600A63FD1 /* Comment.swift in Sources */,
 				3D1C7EB92E7F63BD002C08ED /* Post.swift in Sources */,
 				3DE55CD02E7F4F2300B2F951 /* HomeViewController.swift in Sources */,
 				3D2AE5FB2E84777F0021D63A /* UserAuthenticator.swift in Sources */,
+				3D97C3C62E91EF9400A63FD1 /* PostCommentViewController.swift in Sources */,
 				3D1C7EBD2E806C62002C08ED /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

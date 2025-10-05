@@ -12,6 +12,7 @@ enum StoryBoardConstants: String {
     case signUo = "Signup"
     case home = "Home"
     case detail = "Detail"
+    case comment = "Comment"
 
 
     var instance: UIStoryboard {
@@ -24,5 +25,6 @@ enum StoryBoardIdentifiers {
     static let signUpViewController = "SignUpViewController"
     static let homeViewController = "HomeViewController"
     static let detailViewController = "DetailViewController"
+    static let postCommentViewController = "PostCommentViewController"
 
 }

@@ -21,6 +21,10 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>need Location</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need To access Camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need to access the image</string>
 </dict>

@@ -13,6 +13,7 @@ struct User: ParseUser, Codable {
     var objectId: String?
     var createdAt: Date?
     var updatedAt: Date?
+    var lastPostedDate: Date?
     var ACL: ParseACL?
     var originalData: Data?
 

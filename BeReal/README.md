@@ -1,4 +1,4 @@
-# Project 2 - *Be Real.*
+# Project 3 - *Be Real.*
 
 Submitted by: **Abhijeet**
 
@@ -16,6 +16,11 @@ The following **required** functionality is completed:
 - [X] App has a feed of posts when user logs in
 - [X] User can upload a new post which takes in a picture from photo library and an optional caption    
 - [X] User is able to logout    
+- [X] User can launch camera to take photo instead of photo library
+- [X] Users are not able to see other users’ photos until they upload their own.
+- [X] Users can intereact with posts via comments, comments will have user data such as username and name
+- [X] Posts have a time and location attached to them
+- [X] Users are not able to see other photos until they post their own (within 24 hours)
  
 The following **optional** features are implemented:
 
