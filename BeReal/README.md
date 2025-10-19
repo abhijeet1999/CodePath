@@ -38,7 +38,7 @@ The following **optional** features are implemented:
       <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/5251ac8a19334eaabb7c925ee6f297db-66d91130ee23d88e-full-play.gif">
     </a>
   </div>
-ß
+
 ![App Walkthrough](a.gif)  
 
 
