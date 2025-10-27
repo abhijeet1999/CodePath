@@ -30,17 +30,7 @@ The following **optional** features are implemented:
   - Auto-submits choices after timer expires
   - Timer displayed in the game header
 
-The following **additional** features are implemented:
 
-- [x] Beautiful UI with blue header and modern card-based design
-- [x] HTML entity decoding for proper display of special characters from the API
-- [x] Comprehensive error handling for API failures and no results
-- [x] Loading states with progress indicators
-- [x] Shuffled answer options to prevent pattern recognition
-- [x] Full support for all 24 categories from Open Trivia DB
-- [x] Smooth animations and transitions
-- [x] Touch-friendly button areas for easy selection
-- [x] Navigation with back button to return to options screen
 
 ## Video Walkthrough
 
