@@ -47,38 +47,6 @@ Here's a walkthrough of implemented user stories:
 
 ## Notes
 
-**Challenges encountered while building the app:**
-
-1. **SwiftUI Concurrency Issues**: Initially had AttributeGraph cycle errors when modifying `@Published` properties during view updates. Fixed by using computed properties and `Task { @MainActor in }` for async state updates.
-
-2. **Answer Shuffling**: The app was re-shuffling answers on every view render, causing them to jump around. Fixed by caching shuffled answers during question initialization.
-
-3. **HTML Entity Decoding**: The Open Trivia API returns HTML-encoded strings. Initially used `NSAttributedString` which crashed on background threads. Replaced with a custom thread-safe HTML decoder.
-
-4. **Navigation**: Getting the proper navigation bar with back button while maintaining the full-screen game experience required careful use of `NavigationView` and toolbar modifiers.
-
-5. **Timer Implementation**: Ensuring the timer runs on the MainActor and properly handles background app state was crucial for accurate timing.
-
-## Architecture
-
-The app follows a clean MVVM architecture:
-
-- **Model.swift**: Contains `TriviaQuestion`, `TriviaResponse` models, HTML decoder extension, and API client
-- **ViewModel.swift**: `TriviaViewModel` manages game state, questions, selections, timer, and scoring
-- **ContentView.swift**: Main entry view with options configuration
-- **OptionsView.swift**: Configuration settings component
-- **GameView.swift**: Full-screen game interface
-- **QuestionCardView.swift**: Card-style question display
-- **QuestionListRow.swift**: List-style question display
-- **AnswerRow.swift**: Reusable answer button component
-
-## API Integration
-
-The app integrates with the Open Trivia Database API:
-- Base URL: `https://opentdb.com/api.php`
-- Supports all categories, difficulty levels, and question types
-- Handles error responses (no results, invalid parameters, etc.)
-- Implements proper timeout and error handling
 
 ## License
 
