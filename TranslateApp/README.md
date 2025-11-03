@@ -65,6 +65,17 @@ Some challenges I faced while building the app:
 - Dealing with URL-encoded responses and partial matches from the MyMemory API.
 - Mapping language codes to device TTS voices across locales.
 
+To ignore the Firebase config from git and stop tracking it:
+- Add this line to `.gitignore`: `TranslateApp/GoogleService-Info.plist`
+- Then run:
+```
+git rm --cached TranslateApp/GoogleService-Info.plist
+git add .gitignore
+git commit -m "Ignore GoogleService-Info.plist and stop tracking it"
+```
+
+To run Firebase features, add your own `GoogleService-Info.plist` inside `TranslateApp/`.
+
 ---
 
 ## License
